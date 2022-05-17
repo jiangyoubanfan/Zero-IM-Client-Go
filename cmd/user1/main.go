@@ -66,10 +66,18 @@ func main() {
 				timer := time.NewTimer(time.Second * Second)
 				select {
 				case <-timer.C:
-					client.SendMsg(client.GetSuperGroupChatData(
+					text := fmt.Sprintf("每隔%d秒发一次大群消息， 这是第%d次", Second, gj)
+					data := client.GetSuperGroupChatData(
 						"supergroup_0",
-						NewText(fmt.Sprintf("每隔%d秒发一次大群消息， 这是第%d次", Second, gj)),
-					))
+						NewText(text),
+					)
+					fmt.Printf(`
+                                                                                        [%s]请求发送消息:
+                                                                                %s`,
+						data.ClientMsgID,
+						text,
+					)
+					client.SendMsg(data)
 				}
 			}
 		}()

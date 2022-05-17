@@ -22,14 +22,14 @@ func printText(msg *pb.MsgData, selfID string) {
 			msg.SenderNickname,
 			pb.NewTextContent(msg.Content).String(),
 		)
-	} else {
-		fmt.Printf(
-			`
-											[%s]请求发送消息: 
-										%s
-`,
-			msg.ClientMsgID,
-			pb.NewTextContent(msg.Content).String(),
-		)
-	}
+	} /*else {
+			fmt.Printf(
+				`
+												[%s]请求发送消息:
+											%s
+	`,
+				msg.ClientMsgID,
+				pb.NewTextContent(msg.Content).String(),
+			)
+		}*/
 }

@@ -108,7 +108,7 @@ func (user *Client) receiveHandler() {
 					continue
 				}
 				if _, max := user.getSuperGroupSeq(msgData.GroupID); max < msgData.Seq {
-					user.saveSuperGroupSeq(0, msgData.Seq, msgData.GroupID)
+					user.saveSeq(0, msgData.Seq)
 				}
 				user.callback(count, msgData)
 			}
